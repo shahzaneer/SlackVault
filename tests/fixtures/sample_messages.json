@@ -1,0 +1,164 @@
+[
+  {
+    "input": "can someone add DB_HOST=mydb.internal to the payments app in stage?",
+    "expected": {
+      "irrelevant": false,
+      "reject": false,
+      "needs_clarification": false,
+      "app_name": "payments-service",
+      "environment": "stage",
+      "operation": "add",
+      "key": "DB_HOST",
+      "value": "mydb.internal",
+      "new_key": null
+    }
+  },
+  {
+    "input": "update DB_PASSWORD for payments in staging to newpass123",
+    "expected": {
+      "irrelevant": false,
+      "reject": false,
+      "needs_clarification": false,
+      "app_name": "payments-service",
+      "environment": "stage",
+      "operation": "replace",
+      "key": "DB_PASSWORD",
+      "value": "newpass123",
+      "new_key": null
+    }
+  },
+  {
+    "input": "rename DATABASE_URL to DB_URL in api-gateway, stage",
+    "expected": {
+      "irrelevant": false,
+      "reject": false,
+      "needs_clarification": false,
+      "app_name": "api-gateway",
+      "environment": "stage",
+      "operation": "rename_key",
+      "key": "DATABASE_URL",
+      "value": null,
+      "new_key": "DB_URL"
+    }
+  },
+  {
+    "input": "add LOG_LEVEL=debug in stage",
+    "expected": {
+      "irrelevant": false,
+      "reject": false,
+      "needs_clarification": true,
+      "clarification_question_contains": "Which app",
+      "app_name": null,
+      "environment": "stage",
+      "operation": "add",
+      "key": "LOG_LEVEL",
+      "value": "debug",
+      "new_key": null
+    }
+  },
+  {
+    "input": "set API_KEY=xyz in prod for user-service",
+    "expected": {
+      "irrelevant": false,
+      "reject": true,
+      "reject_reason_contains": "Production",
+      "app_name": "user-service",
+      "environment": "prod",
+      "operation": "replace",
+      "key": "API_KEY",
+      "value": "xyz",
+      "new_key": null
+    }
+  },
+  {
+    "input": "standup at 10am today everyone",
+    "expected": {
+      "irrelevant": true,
+      "reject": false,
+      "needs_clarification": false
+    }
+  },
+  {
+    "input": "remove CACHE_TTL from auth in dev",
+    "expected": {
+      "irrelevant": false,
+      "reject": false,
+      "needs_clarification": false,
+      "app_name": "auth-service",
+      "environment": "dev",
+      "operation": "delete_key",
+      "key": "CACHE_TTL",
+      "value": null,
+      "new_key": null
+    }
+  },
+  {
+    "input": "change REDIS_HOST to redis.production.internal for auth service in dev",
+    "expected": {
+      "irrelevant": false,
+      "reject": false,
+      "needs_clarification": false,
+      "app_name": "auth-service",
+      "environment": "dev",
+      "operation": "replace",
+      "key": "REDIS_HOST",
+      "value": "redis.production.internal",
+      "new_key": null
+    }
+  },
+  {
+    "input": "append DEBUG=true to api gateway in development",
+    "expected": {
+      "irrelevant": false,
+      "reject": false,
+      "needs_clarification": false,
+      "app_name": "api-gateway",
+      "environment": "dev",
+      "operation": "append",
+      "key": "DEBUG",
+      "value": "true",
+      "new_key": null
+    }
+  },
+  {
+    "input": "delete the TIMEOUT key from inventory service in stg",
+    "expected": {
+      "irrelevant": false,
+      "reject": false,
+      "needs_clarification": false,
+      "app_name": "inventory-service",
+      "environment": "stage",
+      "operation": "delete_key",
+      "key": "TIMEOUT",
+      "value": null,
+      "new_key": null
+    }
+  },
+  {
+    "input": "hey can someone help me with the deploy?",
+    "expected": {
+      "irrelevant": true,
+      "reject": false,
+      "needs_clarification": false
+    }
+  },
+  {
+    "input": "set MAX_CONNECTIONS=100 for payments in production",
+    "expected": {
+      "irrelevant": false,
+      "reject": true,
+      "reject_reason_contains": "Production"
+    }
+  },
+  {
+    "input": "update the payments service Port to 8080 in dev",
+    "expected": {
+      "irrelevant": false,
+      "reject": false,
+      "needs_clarification": false,
+      "app_name": "payments-service",
+      "environment": "dev",
+      "operation": "replace"
+    }
+  }
+]

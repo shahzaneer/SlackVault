@@ -1,0 +1,28 @@
+# App Registry: maps user-friendly aliases to AWS Secrets Manager paths.
+#
+# Paths can use {environment} as a placeholder — it gets replaced with "dev" or "stage".
+# Secret names have no fixed prefix. They can be anything.
+#
+# Examples:
+#   "{environment}/payments-service"        → "dev/payments-service"
+#   "team-a/{environment}/payments/creds"    → "team-a/dev/payments/creds"
+#   "payments-service-dev"                   → static path, no placeholder
+
+apps:
+  - aliases: [payments, payment-service, payments-api, payment svc, payments-service]
+    secret_path: "{environment}/payments-service"
+
+  - aliases: [auth, auth-service, authentication]
+    secret_path: "{environment}/auth-service"
+
+  - aliases: [api-gateway, gateway, api gateway]
+    secret_path: "{environment}/api-gateway"
+
+  - aliases: [user-service, users, user-svc]
+    secret_path: "{environment}/user-service"
+
+  - aliases: [notification, notification-service, notify]
+    secret_path: "{environment}/notification-service"
+
+  - aliases: [inventory, inventory-service, inventory-svc]
+    secret_path: "{environment}/inventory-service"

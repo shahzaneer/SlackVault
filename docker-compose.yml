@@ -1,0 +1,41 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: slackvault
+
+  slackvault:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_SECRET_ARN=
+      - SLACK_SIGNING_SECRET=your-slack-signing-secret
+      - SLACK_BOT_TOKEN=xoxb-your-bot-token
+      - DEEPSEEK_API_KEY=your-deepseek-api-key
+      - DEEPSEEK_API_BASE_URL=https://api.deepseek.com
+      - DEEPSEEK_MODEL=deepseek-chat
+      - ALLOWED_CHANNEL_IDS=C012XY,C034AB
+      - DB_URL=mongodb://mongodb:27017
+      - MONGO_DB_NAME=slackvault
+      - TRIGGER_MODE=mention
+      - AUTO_CREATE_SECRET=true
+      - LOG_LEVEL=INFO
+      - MAX_CONCURRENT_OPS=10
+      - AWS_ACCESS_KEY_ID=testing
+      - AWS_SECRET_ACCESS_KEY=testing
+      - AWS_DEFAULT_REGION=us-east-1
+    depends_on:
+      - mongodb
+    volumes:
+      - ./src:/app/src
+      - ./config:/app/config
+
+volumes:
+  mongo_data:
