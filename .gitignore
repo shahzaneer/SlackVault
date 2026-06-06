@@ -8,7 +8,7 @@ dist/
 build/
 .eggs/
 pip-wheel-metadata/
-
+.github
 # --- Environment & Secrets ---
 .env
 .env.local
